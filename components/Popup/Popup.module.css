@@ -1,0 +1,302 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 24px;
+
+  background: rgba(15, 15, 15, 0.45);
+
+  backdrop-filter: blur(14px);
+
+  animation: fadeIn 0.7s ease;
+}
+
+.modal {
+  position: relative;
+
+  width: 100%;
+  max-width: 680px;
+
+  overflow: hidden;
+
+  padding: 70px;
+
+  border-radius: 40px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.82),
+      rgba(255,255,255,0.72)
+    );
+
+  backdrop-filter: blur(30px);
+
+  border: 1px solid
+    rgba(255,255,255,0.4);
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,0.12),
+    inset 0 1px 0
+      rgba(255,255,255,0.7);
+
+  animation: popupIn 1s
+    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ========================= */
+/* GLOW */
+/* ========================= */
+
+.glow1,
+.glow2 {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+
+  opacity: 0.45;
+
+  pointer-events: none;
+}
+
+.glow1 {
+  top: -120px;
+  right: -120px;
+
+  width: 260px;
+  height: 260px;
+
+  background: #f7e0f6;
+}
+
+.glow2 {
+  bottom: -120px;
+  left: -120px;
+
+  width: 240px;
+  height: 240px;
+
+  background: #dcbed1;
+}
+
+/* ========================= */
+/* TYPOGRAPHY */
+/* ========================= */
+
+.subtitle {
+  letter-spacing: 6px;
+
+  text-transform: uppercase;
+
+  font-size: 12px;
+
+  color: #b58a71;
+}
+
+.title {
+  margin-top: 22px;
+
+  font-size: clamp(52px, 8vw, 88px);
+
+  line-height: 0.92;
+
+  font-weight: 500;
+
+  color: #1f1f1f;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+}
+
+.title span {
+  font-style: italic;
+
+  color: #c9a48f;
+}
+
+.description {
+  margin-top: 28px;
+
+  max-width: 520px;
+
+  font-size: 18px;
+
+  line-height: 1.9;
+
+  color: rgba(40,40,40,0.72);
+}
+
+/* ========================= */
+/* ACTIONS */
+/* ========================= */
+
+.actions {
+  display: flex;
+  gap: 18px;
+
+  margin-top: 45px;
+
+  flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  height: 58px;
+
+  padding: 0 34px;
+
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  transition: all 0.45s ease;
+}
+
+.primaryBtn {
+  background:
+    linear-gradient(
+      135deg,
+      #eec6de,
+      #efd8e0
+    );
+
+  color: white;
+ border: 1px solid
+    rgba(0,0,0,0.08);
+  text-decoration: none;
+transition: all 0.3s ease;
+  box-shadow:
+    0 10px 30px
+    rgba(199,157,132,0.35);
+}
+
+.primaryBtn:hover {
+background:
+    rgba(246, 179, 218, 0.8);
+  box-shadow:
+    0 18px 45px
+    rgba(199,157,132,0.45);
+    color: rgb(44, 43, 43);
+}
+
+.secondaryBtn {
+  border: 1px solid
+    rgba(0,0,0,0.08);
+
+  background:
+    rgba(255,255,255,0.55);
+
+  color: #555;
+}
+
+.secondaryBtn:hover {
+  background:
+    rgba(255,255,255,0.8);
+}
+
+/* ========================= */
+/* CLOSE */
+/* ========================= */
+
+.close {
+  position: absolute;
+
+  top: 22px;
+  right: 22px;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background:
+    rgba(255,255,255,0.6);
+
+  backdrop-filter: blur(10px);
+
+  color: #444;
+
+  font-size: 24px;
+
+  cursor: pointer;
+
+  transition: all 0.35s ease;
+}
+
+.close:hover {
+  transform: rotate(90deg);
+
+  background:
+    rgba(255,255,255,0.9);
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(30px)
+      scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 42px 30px;
+  }
+
+  .title {
+    font-size: 54px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

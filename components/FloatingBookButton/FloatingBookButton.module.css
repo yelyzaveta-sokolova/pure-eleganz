@@ -1,0 +1,48 @@
+.wrapper {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s ease;
+}
+
+.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.button {
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: #fdb8dd;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.button:hover {
+  transform: translateY(-3px);
+
+  background: #ff78c0;
+}
+
+/* modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  width: 320px;
+}

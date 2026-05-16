@@ -1,0 +1,328 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.scrolled {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 40px;
+  letter-spacing: 3px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logo:hover {
+  color: #f3cfcf;
+}
+/* ================= NAV ================= */
+
+.nav {
+  display: flex;
+  gap: 30px;
+  margin-left: auto;
+  align-items: center;
+}
+
+.nav a {
+  padding: 5px 8px;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+  transition: color 0.3s ease, all 0.3s ease;
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  color: #ce8383;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #e7c9c9;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+.active {
+  color: #b88c8c;
+}
+
+.active::after {
+  width: 100%;
+}
+
+/* ================= BURGER ================= */
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 200;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.burger:hover span {
+  background: #f4e1e1;
+}
+/* бургер анимация */
+
+.burgerActive span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burgerActive span:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerActive span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.burgerActive span {
+  background: #ffd3f5;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+
+  .logo {
+  font-size: 20px;
+}
+
+
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 80px;
+    right: clamp(20px, 5vw, 60px);
+    flex-direction: column;
+    width: 230px;
+    padding: 30px;
+    gap: 20px;
+
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(25px);
+    border-radius: 20px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+    z-index: 150;
+  }
+
+  .nav.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+
+/* ================= OVERLAY ================= */
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  z-index: 90;
+}
+
+.showOverlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ================= HEADER ================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+}
+
+.scrolled {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+}
+
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 60px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ================= NAVIGATION ================= */
+
+.nav {
+  display: flex;
+  gap: 30px;
+  margin-left: auto;
+  align-items: center;
+  z-index: 200;
+}
+
+.nav a {
+  padding: 5px 8px;
+  text-decoration: none;
+  color: #333;
+  position: relative;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+/* underline animation */
+.nav a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #e7c9c9;
+  left: 0;
+  bottom: -4px;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+.active {
+  color: #b88c8c;
+}
+
+.active::after {
+  width: 100%;
+}
+
+/* ================= BURGER ================= */
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 300;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* ===== BURGER ANIMATION ===== */
+
+.burgerActive span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.burgerActive span:nth-child(2) {
+  opacity: 0;
+}
+
+.burgerActive span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+.burgerActive span {
+  background: #b88c8c;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    position: fixed;
+    top: 90px;
+    right: clamp(20px, 5vw, 60px);
+    flex-direction: column;
+    width: 240px;
+    padding: 30px;
+    gap: 20px;
+
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: all 0.4s ease;
+  }
+
+  .open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+}
+

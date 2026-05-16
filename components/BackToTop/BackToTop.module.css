@@ -1,0 +1,55 @@
+.button {
+  position: fixed;
+  bottom: 90px;
+  right: 40px;
+  z-index: 999;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(15px);
+
+  font-size: 18px;
+  color: #333;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  transition: all 0.4s ease;
+
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* ✨ Hover эффект */
+.button:hover {
+  transform: translateY(-4px) scale(1.05);
+
+  /* мягкая розовая обводка */
+  box-shadow:
+    0 0 0 2px rgba(231, 201, 201, 0.6),
+    0 15px 40px rgba(231, 201, 201, 0.35);
+
+  /* лёгкий glow */
+  background: rgba(255, 240, 242, 0.9);
+}
+
+.show {
+  animation: subtleFloat 3s ease-in-out infinite;
+}
+
+@keyframes subtleFloat {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+  100% { transform: translateY(0); }
+}

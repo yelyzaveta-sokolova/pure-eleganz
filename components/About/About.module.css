@@ -1,0 +1,196 @@
+.section {
+  padding: 140px 20px;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fff7f8, #fdfcfc, #f8f3f5);
+}
+
+/* мягкий свет */
+.section::before {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: rgba(231, 201, 201, 0.3);
+  filter: blur(150px);
+  top: -200px;
+  right: -200px;
+  animation: float 12s ease-in-out infinite alternate;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(40px);
+  }
+}
+
+/* CARD */
+.card {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  display: flex;
+  gap: 60px;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 60px;
+  border-radius: 30px;
+
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+
+  transition: all 1s ease;
+}
+
+/* fade animation */
+.hidden {
+  opacity: 0;
+  transform: translateY(60px);
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* TEXT */
+.textBlock {
+  flex: 1;
+}
+
+.title {
+  font-size: 38px;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  width: 70px;
+  height: 2px;
+  background: #e7c9c9;
+  display: block;
+  margin-top: 15px;
+  border-radius: 2px;
+}
+
+.textBlock p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+
+/* IMAGE BLOCK */
+.imageBlock {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+/* IMAGE WRAPPER (DESKTOP FIXED) */
+.imageWrapper {
+  position: relative;
+  width: 400px;
+  height: 560px;
+
+  border-radius: 25px;
+  overflow: hidden;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+/* IMAGE */
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* hover zoom */
+.imageWrapper:hover .image {
+  transform: scale(1.08);
+}
+
+/* soft vignette */
+.imageWrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.08)
+  );
+
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.imageWrapper:hover::after {
+  opacity: 1;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 1024px) {
+  .card {
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .imageBlock {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    max-width: 420px;
+
+    /* важно: только ratio, без height */
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 480px) {
+  .card {
+    padding: 25px;
+    gap: 30px;
+  }
+
+  .imageWrapper {
+    width: 100%;
+    max-width: 320px;
+
+    aspect-ratio: 4 / 5;
+
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 30px;
+  }
+
+  .textBlock p {
+    font-size: 16px;
+  }
+}
