@@ -93,15 +93,15 @@ export default function Services() {
     },
     {
       className: styles.legsshort,
-      name: "Beine bis zum Knie",
+      name: "Unterschenkel",
       price: "30€",
-      title: "Beine bis zum Knie",
+      title: "Unterschenkel",
       description:
         "Sugaring der Unterschenkel bis zum Kniebereich.",
     },
     {
       className: styles.arms,
-      name: "Arme",
+      name: "Arme komplett",
       price: "25€",
       title: "Arme komplett",
       description:
@@ -109,10 +109,10 @@ export default function Services() {
     },
     {
       className: styles.armsshort,
-      name: "Arme bis zum Ellenbogen",
+      name: "Unterarme",
       price: "15€",
       title:
-        "Arme bis zum Ellenbogen",
+        "Unterarme",
       description:
         "Sugaring der Unterarme bis zum Ellenbogen.",
     },
@@ -126,9 +126,9 @@ export default function Services() {
     },
     {
       className: styles.bikini,
-      name: "Bikini",
+      name: "Bikinizone",
       price: "20€",
-      title: "Bikini",
+      title: "Bikinizone",
       description:
         "Sanfte Haarentfernung entlang der Bikini-Linie.",
     },
@@ -150,9 +150,9 @@ export default function Services() {
     },
     {
       className: styles.lowerback,
-      name: "Poperek",
+      name: "Untere Rückenbereich",
       price: "10€",
-      title: "Poperek",
+      title: "Untere Rückenbereich",
       description:
         "Sugaring des unteren Rückenbereichs.",
     },
@@ -167,7 +167,7 @@ export default function Services() {
   ];
 
   const bundles: Bundle[] = [
-  { name: "Komplett Beine + Bikini", price: 50 },
+  { name: "Komplett Beine + Bikini", price: 55 },
   { name: "Bikini + Achseln", price: 25 },
   { name: "Full Body Angebot", price: 100 },
 ];

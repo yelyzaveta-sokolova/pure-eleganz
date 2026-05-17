@@ -6,6 +6,7 @@
   opacity: 0;
   pointer-events: none;
   transition: 0.4s ease;
+  z-index: 9999;
 }
 
 .show {
@@ -25,9 +26,9 @@
 
 .button:hover {
   transform: translateY(-3px);
-
   background: #ff78c0;
 }
+
 
 /* modal */
 .modalOverlay {
@@ -45,4 +46,13 @@
   padding: 20px;
   border-radius: 16px;
   width: 320px;
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .wrapper {
+    left: 16px;
+    transform: none;
+    bottom: 16px;
+  }
 }

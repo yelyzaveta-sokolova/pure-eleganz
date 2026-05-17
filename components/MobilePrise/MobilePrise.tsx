@@ -21,10 +21,10 @@ type CardData = {
 const bundles: Bundle[] = [
   {
     name: "Komplett Beine + Bikini",
-    price: 50,
+    price: 55,
     includes: [
       "Komplette Beine (Oberschenkel + Unterschenkel)",
-      "Bikini-Zone komplett",
+      "Bikini-Zone",
       "Hautberuhigung nach der Behandlung",
     ],
   },
