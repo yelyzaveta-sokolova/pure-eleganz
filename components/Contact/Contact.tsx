@@ -1,18 +1,10 @@
 "use client";
+
 import styles from "./Contact.module.css";
-import useFadeInOnScroll from "@/hooks/useFadeInOnScroll";
 
 export default function Contact() {
-  const { ref, isVisible } = useFadeInOnScroll();
-
   return (
-    <section
-      id="kontakt"
-      ref={ref}
-      className={`${styles.section} ${
-        isVisible ? styles.visible : styles.hidden
-      }`}
-    >
+    <section id="kontakt" className={styles.section}>
       <div className={styles.container}>
         <h2 className={styles.title}>Kontakt</h2>
 

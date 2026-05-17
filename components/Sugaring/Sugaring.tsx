@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import styles from "./Sugaring.module.css";
-import useFadeInOnScroll from "@/hooks/useFadeInOnScroll";
 
 const faqItems = [
   {
@@ -28,24 +27,15 @@ const faqItems = [
 ];
 
 export default function SugaringInfo() {
-  const { ref, isVisible } = useFadeInOnScroll();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   const toggleAccordion = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    setActiveIndex((currentIndex) => (currentIndex === index ? null : index));
   };
 
-
   return (
-    <section
-     id="sugaring"
-     className={styles.section}>
-      <div
-        ref={ref}
-        className={`${styles.container} ${
-          isVisible ? styles.visible : styles.hidden
-        }`}
-      >
+    <section id="sugaring" className={styles.section}>
+      <div className={styles.container}>
         <span className={styles.label}>PURE ELEGANZ SUGARING</span>
 
         <h2 className={styles.title}>
@@ -53,10 +43,10 @@ export default function SugaringInfo() {
         </h2>
 
         <p className={styles.description}>
-          Sugaring ist eine besonders hautschonende Methode zur
-          Haarentfernung mit natürlicher Zuckerpaste. Die Haare werden
-          sanft in Wuchsrichtung entfernt, wodurch Hautirritationen,
-          eingewachsene Haare und starke Reizungen minimiert werden.
+          Sugaring ist eine besonders hautschonende Methode zur Haarentfernung
+          mit natürlicher Zuckerpaste. Die Haare werden sanft in Wuchsrichtung
+          entfernt, wodurch Hautirritationen, eingewachsene Haare und starke
+          Reizungen minimiert werden.
         </p>
 
         <div className={styles.cards}>
@@ -64,9 +54,8 @@ export default function SugaringInfo() {
             <h3>Warum Sugaring?</h3>
 
             <p>
-              Im Vergleich zur Rasur bleibt die Haut deutlich länger glatt.
-              Die Haare wachsen feiner nach und die Haut fühlt sich
-              geschmeidiger an.
+              Im Vergleich zur Rasur bleibt die Haut deutlich länger glatt. Die
+              Haare wachsen feiner nach und die Haut fühlt sich geschmeidiger an.
             </p>
 
             <ul>
@@ -118,25 +107,35 @@ export default function SugaringInfo() {
         <div className={styles.faq}>
           <h3 className={styles.faqTitle}>Häufige Fragen</h3>
 
-          {faqItems.map((item, index) => (
-            <div key={index} className={styles.accordionItem}>
-              <button
-                className={styles.accordionButton}
-                onClick={() => toggleAccordion(index)}
-              >
-                <span>{item.question}</span>
-                <span>{activeIndex === index ? "−" : "+"}</span>
-              </button>
+          {faqItems.map((item, index) => {
+            const isOpen = activeIndex === index;
 
-              <div
-                className={`${styles.accordionContent} ${
-                  activeIndex === index ? styles.open : ""
-                }`}
-              >
-                <p>{item.answer}</p>
+            return (
+              <div key={item.question} className={styles.accordionItem}>
+                <button
+                  type="button"
+                  className={styles.accordionButton}
+                  onClick={() => toggleAccordion(index)}
+                  aria-expanded={isOpen}
+                >
+                  <span>{item.question}</span>
+                  <span className={styles.accordionIcon}>
+                    {isOpen ? "−" : "+"}
+                  </span>
+                </button>
+
+                <div
+                  className={`${styles.accordionContent} ${
+                    isOpen ? styles.open : ""
+                  }`}
+                >
+                  <div className={styles.accordionInner}>
+                    <p>{item.answer}</p>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

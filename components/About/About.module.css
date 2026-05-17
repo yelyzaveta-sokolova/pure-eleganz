@@ -1,5 +1,5 @@
 .section {
-  padding: 140px 20px;
+  padding: 120px 20px;
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, #fff7f8, #fdfcfc, #f8f3f5);
@@ -16,12 +16,15 @@
   top: -200px;
   right: -200px;
   animation: float 12s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
 }
 
 @keyframes float {
   from {
     transform: translateY(0);
   }
+
   to {
     transform: translateY(40px);
   }
@@ -44,23 +47,28 @@
   background: rgba(255, 255, 255, 0.6);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
 
-  transition: all 1s ease;
+  position: relative;
+  z-index: 1;
+
+  animation: fadeIn 0.8s ease forwards;
 }
 
-/* fade animation */
-.hidden {
-  opacity: 0;
-  transform: translateY(60px);
-}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
 
-.visible {
-  opacity: 1;
-  transform: translateY(0);
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* TEXT */
 .textBlock {
   flex: 1;
+  min-width: 0;
 }
 
 .title {
@@ -90,13 +98,16 @@
 /* IMAGE BLOCK */
 .imageBlock {
   flex: 1;
+  min-width: 0;
+
   display: flex;
   justify-content: center;
 }
 
-/* IMAGE WRAPPER (DESKTOP FIXED) */
+/* IMAGE WRAPPER */
 .imageWrapper {
   position: relative;
+
   width: 400px;
   height: 560px;
 
@@ -109,10 +120,8 @@
 
 /* IMAGE */
 .image {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
-
+  object-position: center;
   transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
 }
@@ -137,6 +146,7 @@
   opacity: 0;
   transition: opacity 0.6s ease;
   pointer-events: none;
+  z-index: 1;
 }
 
 .imageWrapper:hover::after {
@@ -146,15 +156,25 @@
 /* =========================
    TABLET
 ========================= */
-@media (max-width: 1024px) {
+@media (max-width: 900px) {
+  .section {
+    padding: 72px 18px;
+  }
+
   .card {
     flex-direction: column;
+    align-items: center;
     gap: 40px;
     padding: 40px;
   }
 
+  .textBlock,
   .imageBlock {
+    flex: none;
     width: 100%;
+  }
+
+  .imageBlock {
     display: flex;
     justify-content: center;
   }
@@ -163,8 +183,8 @@
     width: 100%;
     max-width: 420px;
 
-    /* важно: только ratio, без height */
-    aspect-ratio: 4 / 5;
+    /* важно для Next/Image fill */
+    height: clamp(380px, 70vw, 520px);
   }
 }
 
@@ -172,25 +192,34 @@
    MOBILE
 ========================= */
 @media (max-width: 480px) {
+  .section {
+    padding: 56px 14px;
+  }
+
   .card {
     padding: 25px;
     gap: 30px;
+    border-radius: 24px;
   }
 
   .imageWrapper {
     width: 100%;
     max-width: 320px;
 
-    aspect-ratio: 4 / 5;
+    /* важно для Next/Image fill */
+    height: clamp(320px, 100vw, 400px);
 
     margin: 0 auto;
+    border-radius: 20px;
   }
 
   .title {
     font-size: 30px;
+    letter-spacing: 1.5px;
   }
 
   .textBlock p {
     font-size: 16px;
+    line-height: 1.65;
   }
 }
